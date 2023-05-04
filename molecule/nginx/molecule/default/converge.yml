@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include role"   # пишем название нашей  роли
+      include_role:
+        name: "nginx"
