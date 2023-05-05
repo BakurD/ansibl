@@ -1,0 +1,7 @@
+- name: Playbook for my_metrics_collection
+  hosts: all
+  become: true
+  collections:
+    - bakur.metrics
+  roles:
+    - my_role
