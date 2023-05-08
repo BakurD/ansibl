@@ -1,0 +1,57 @@
+                                        Collections
+
+Ansible Collection - это пакет, содержащий одну или несколько ролей Ansible, плагинов, модулей, 
+инвентаризации, файлов переменных и других файлов, необходимых для использования этих компонентов в вашем проекте.
+
+Коллекции можно сравнить с библиотеками в других языках программирования. Они позволяют легко расширять 
+функциональность Ansible, управлять зависимостями и переиспользовать код в различных проектах.
+
+Кроме того, Ansible Collection имеет структуру и организацию, которая делает его более удобным для использования, 
+чем просто набор файлов и папок. Каждая коллекция имеет собственное пространство имен, которое позволяет избежать 
+конфликтов имен и упрощает управление зависимостями. Коллекции можно загружать из репозиториев Ansible Galaxy или хранить локально.
+
+Некоторые известные коллекции Ansible включают в себя community.general, awx.awx, kubernetes.core и другие.
+
+Чтобы создать новую коллекцию Ansible, нужно выполнить следующие шаги:
+1. pip install ansible-builder - устанавливаем пакет ansible-builder
+2. ansible-galaxy collection init bakur.metrics - создаем структуру коллекции в namespace bakur с именем коллекции metrics
+3. в директории roles создаем нужные роли: ansible-galaxy init <название роли> 
+4. создаем и заполняем фалы: ansible.cfg, playbook.yaml, hosts.txt, group_vars/<name of group>
+5. пример ansible collection, которая устанавливает docker на удаленные инстансы, и в нем разворачивает контейнер php-fpm - который доступен на 8080 - порту:
+https://github.com/BakurD/ansibl/tree/main/collection
+6. пример построения коллекции:
+├── bakur
+│   └── metrics
+│       ├── ansible.cfg
+│       ├── Collection.pem
+│       ├── docs
+│       ├── galaxy.yml
+│       ├── group_vars
+│       │   └── ubuntu
+│       ├── hosts.txt
+│       ├── meta
+│       │   └── runtime.yml
+│       ├── playbook.yml
+│       ├── plugins
+│       │   └── README.md
+│       ├── README.md
+│       └── roles
+│           └── my_role
+│               ├── defaults
+│               │   └── main.yml
+│               ├── files
+│               │   ├── Dockerfile
+│               │   └── index.php
+│               ├── handlers
+│               │   └── main.yml
+│               ├── meta
+│               │   └── main.yml
+│               ├── README.md
+│               ├── tasks
+│               │   └── main.yml
+│               ├── templates
+│               ├── tests
+│               │   ├── inventory
+│               │   └── test.yml
+│               └── vars
+│                   └── main.yml
